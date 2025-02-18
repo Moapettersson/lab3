@@ -14,8 +14,8 @@ import java.awt.event.ActionListener;
  **/
 
 public class VehicleView extends JFrame{
-    private static final int X = 800;
-    private static final int Y = 800;
+    private static final int X = 600;
+    private static final int Y = 600;
 
     // The controller member
     VehicleController carC;
@@ -28,6 +28,8 @@ public class VehicleView extends JFrame{
     JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
+
+    int brakeAmount = 10;
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
@@ -106,6 +108,12 @@ public class VehicleView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 carC.gas(gasAmount);
             }
+        });
+
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.brake(brakeAmount); }
         });
 
         // Make the frame pack all it's components by respecting the sizes if possible.
