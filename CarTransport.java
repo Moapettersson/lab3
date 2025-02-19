@@ -10,7 +10,7 @@ public class CarTransport extends Vehicle {
 
 
     public CarTransport(int loadCapacity) {
-        super ("Biltransport", 2, 175,"North", Color.red);
+        super ("Biltransport", 2, 175,180, Color.red);
         CargoTruck = new CargoTruck(0,1);
         this.loadCapacity = loadCapacity;
     }

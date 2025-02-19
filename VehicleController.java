@@ -51,6 +51,16 @@ public class VehicleController {
                 vehicle.move();
                 int x = (int) Math.round(vehicle.getX());
                 int y = (int) Math.round(vehicle.getY());
+
+                //Nu hårdkodar jag bar in gränserna på fönstret, hur tar jag in värdena här?
+                //blir det dumt att bilen kommer ha en annan hastighet efter startEngine?
+                if (x < 0 || x > 1200 || y < 0 || y > 650) {
+                    //vehicle.stopEngine();
+                    vehicle.turnLeft();
+                    vehicle.turnLeft();
+                    //vehicle.startEngine();
+                }
+
                 frame.drawPanel.moveit(vehicle, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -72,6 +82,33 @@ public class VehicleController {
         for (Vehicle vehicle : vehicles
         ) {
             vehicle.brake(brake);
+        }
+    }
+    void stop() {
+        for (Vehicle vehicle : vehicles
+        ) {
+            vehicle.stopEngine();
+        }
+    }
+
+    void start() {
+        for (Vehicle vehicle : vehicles
+        ) {
+            vehicle.startEngine();
+        }
+    }
+
+    void turnLeft() {
+        for (Vehicle vehicle : vehicles
+        ) {
+            vehicle.turnLeft();
+        }
+    }
+
+    void turnRight() {
+        for (Vehicle vehicle : vehicles
+        ) {
+            vehicle.turnRight();
         }
     }
 }
