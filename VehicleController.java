@@ -30,6 +30,9 @@ public class VehicleController {
         VehicleController cc = new VehicleController();
 
         cc.vehicles.add(new Volvo240());
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.add(new ScaniaTruck());
+
 
         // Start a new view and send a reference of self
         cc.frame = new VehicleView("CarSim 1.0", cc);
@@ -39,8 +42,8 @@ public class VehicleController {
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+     * view to update its images. Change this method to your needs.
+     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
@@ -58,7 +61,7 @@ public class VehicleController {
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Vehicle vehicle : vehicles
-                ) {
+        ) {
             vehicle.gas(gas);
         }
     }
@@ -66,8 +69,11 @@ public class VehicleController {
     void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Vehicle vehicle : vehicles
-                ) {
+        ) {
             vehicle.brake(brake);
         }
     }
 }
+
+
+

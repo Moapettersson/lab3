@@ -69,7 +69,7 @@ public class CarTransport extends Vehicle {
 
     @Override
     public void move() {
-        if (CargoTruck.getAngle() == 0);{
+        if (CargoTruck.getAngle() == 0) {
             super.move();
             for (int i=0; i<cargo.size(); i++) {
                 cargo.get(i).setPosition(getX(), getY());
