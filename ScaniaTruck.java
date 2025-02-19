@@ -4,10 +4,12 @@ public class ScaniaTruck extends Vehicle {
 
     protected CargoTruck CargoTruck;
 
-    public ScaniaTruck(){
+    public ScaniaTruck(int x, int y){
         super("Scania", 2, 175, "North", Color.blue);
         CargoTruck = new CargoTruck(0, 70);
         stopEngine();
+        this.x = x;
+        this.y = y;
     }
 
     protected void raiseTruckBed(int degrees) {

@@ -29,9 +29,10 @@ public class VehicleController {
         // Instance of this class
         VehicleController cc = new VehicleController();
 
-        cc.vehicles.add(new Volvo240());
-        cc.vehicles.add(new Saab95());
-        cc.vehicles.add(new ScaniaTruck());
+        cc.vehicles.add(new Volvo240(0,0));
+        cc.vehicles.add(new Saab95(0, 100));
+        cc.vehicles.add(new ScaniaTruck(0,200));
+
 
 
         // Start a new view and send a reference of self
@@ -50,7 +51,7 @@ public class VehicleController {
                 vehicle.move();
                 int x = (int) Math.round(vehicle.getX());
                 int y = (int) Math.round(vehicle.getY());
-                frame.drawPanel.moveit(x, y);
+                frame.drawPanel.moveit(vehicle, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
