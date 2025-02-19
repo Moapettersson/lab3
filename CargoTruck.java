@@ -8,15 +8,36 @@ public class CargoTruck {
         this.min = min;
         this.max = max;
     }
-    public int getAngle() {return TruckBedAngle;}
 
-    public int getMax() {return this.max;}
+    public int getAngle() {
+        return TruckBedAngle;
+    }
 
-    public int getMin() {return this.min;}
+    public int getMax() {
+        return this.max;
+    }
+
+    public int getMin() {
+        return this.min;
+    }
 
     public void setAngle(int angle) {
-        if(angle >= this.min && angle <= this.max){
+        if (angle >= this.min && angle <= this.max) {
             TruckBedAngle = angle;
         }
     }
+
+    public void addAngle(int angle) {
+        if (angle >= this.min && angle <= this.max) {
+            TruckBedAngle += angle;
+        }
+    }
+
+    public void subtractAngle(int angle) {
+        if (angle >= this.min && angle <= this.max) {
+            TruckBedAngle -= angle;
+        }
+    }
 }
+
+
