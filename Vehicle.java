@@ -7,7 +7,7 @@ public abstract class Vehicle implements movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     protected String modelName; // The car model name
-    protected double speedFactor;
+
 
     protected double x;
     protected double y;

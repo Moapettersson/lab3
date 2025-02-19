@@ -35,6 +35,7 @@ public class VehicleController {
 
 
 
+
         // Start a new view and send a reference of self
         cc.frame = new VehicleView("CarSim 1.0", cc);
 
@@ -111,6 +112,38 @@ public class VehicleController {
             vehicle.turnRight();
         }
     }
+    void turnOnTurbo(){
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOn();
+            }
+        }
+    }
+    void turnOffTurbo(){
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOff();
+            }
+        }
+    }
+
+    void liftBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof ScaniaTruck) {
+                ((ScaniaTruck) vehicle).raiseTruckBed(10); // Oklart vilken grad det ska vara?
+            }
+        }
+    }
+
+
+    void lowerBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof ScaniaTruck) {
+                ((ScaniaTruck) vehicle).lowerTruckBed(10); // Vilken grad är rimlig?
+            }
+        }
+    }
+
 }
 
 
