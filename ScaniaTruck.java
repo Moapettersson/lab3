@@ -4,10 +4,12 @@ public class ScaniaTruck extends Vehicle {
 
     protected CargoTruck CargoTruck;
 
-    public ScaniaTruck(){
-        super("Scania", 2, 175, "North", Color.blue);
+    public ScaniaTruck(int x, int y){
+        super("Scania", 2, 175, 180, Color.blue);
         CargoTruck = new CargoTruck(0, 70);
         stopEngine();
+        this.x = x;
+        this.y = y;
     }
 
     protected void raiseTruckBed(int degrees) {
@@ -17,8 +19,10 @@ public class ScaniaTruck extends Vehicle {
             throw new IllegalArgumentException("Invalid integer. Must be within the limits 0-70");
         } else if (CargoTruck.getAngle() + degrees >= 70) {
             CargoTruck.setAngle(70);
+            System.out.println(CargoTruck.getAngle());
         } else {
-            CargoTruck.setAngle(degrees);
+            CargoTruck.addAngle(degrees);
+            System.out.println(CargoTruck.getAngle());
         }
     }
 
@@ -27,10 +31,12 @@ public class ScaniaTruck extends Vehicle {
             throw new IllegalStateException("Truck must be stationary to raise or lower the truckbed");
         } else if (degrees < 0 || degrees > 70){
             throw new IllegalArgumentException("Invalid integer. Must be within the limits 0-70");
-        } else if (CargoTruck.getAngle() + degrees <= 0) {
+        } else if (CargoTruck.getAngle() - degrees <= 0) {
             CargoTruck.setAngle(0);
+            System.out.println(CargoTruck.getAngle());
         } else {
-            CargoTruck.setAngle(degrees);
+            CargoTruck.subtractAngle(degrees);
+            System.out.println(CargoTruck.getAngle());
         }
     }
 

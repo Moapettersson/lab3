@@ -7,13 +7,13 @@ public abstract class Vehicle implements movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     protected String modelName; // The car model name
-    protected double speedFactor;
+
 
     protected double x;
     protected double y;
-    protected String direction;
+    protected int direction;
 
-    public Vehicle(String modelName, int nrDoors, int enginePower, String direction, Color color) {
+    public Vehicle(String modelName, int nrDoors, int enginePower, int direction, Color color) {
         this.modelName = modelName;
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
@@ -49,11 +49,11 @@ public abstract class Vehicle implements movable {
         currentSpeed = 0;
     }
 
-    private void setDirection(String dir) {
+    private void setDirection(int dir) {
         direction = dir;
     }
 
-    public String getDirection() {
+    public int getDirection() {
         return direction;
     }
 
@@ -73,19 +73,19 @@ public abstract class Vehicle implements movable {
         y += yChange;
     }
 
-// hello
+
     public void move() {
         switch (direction) {
-            case "North":
+            case 180:
                 y += currentSpeed;
                 break;
-            case "East":
+            case 270:
                 x += currentSpeed;
                 break;
-            case "South":
+            case 0:
                 y -= currentSpeed;
                 break;
-            case "West":
+            case 90:
                 x -= currentSpeed;
                 break;
         }
@@ -93,36 +93,18 @@ public abstract class Vehicle implements movable {
     }
 
     public void turnLeft() {
-        switch (direction) {
-            case "North":
-                setDirection("West");
-                break;
-            case "East":
-                setDirection("North");
-                break;
-            case "South":
-                setDirection("East");
-                break;
-            case "West":
-                setDirection("South");
-                break;
+        if (direction == 270) {
+            setDirection(0);
+        } else {
+            direction += 90;
         }
     }
 
     public void turnRight() {
-        switch (direction) {
-            case "North":
-                setDirection("East");
-                break;
-            case "East":
-                setDirection("South");
-                break;
-            case "South":
-                setDirection("West");
-                break;
-            case "West":
-                setDirection("North");
-                break;
+        if (direction == 0) {
+            setDirection(270);
+        } else {
+            direction -= 90;
         }
     }
 

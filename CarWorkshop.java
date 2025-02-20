@@ -27,7 +27,7 @@ public class CarWorkshop <T extends Vehicle>{
             nrCars -= 1;
             return removedVehicle;
         }
-        else{ throw new IllegalArgumentException("Wrong!!!!!!!!!!!!!");
+        else{ throw new IllegalArgumentException("Wrong index");
         }
     }
 

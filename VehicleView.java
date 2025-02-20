@@ -14,8 +14,8 @@ import java.awt.event.ActionListener;
  **/
 
 public class VehicleView extends JFrame{
-    private static final int X = 800;
-    private static final int Y = 800;
+    private static final int X = 1200;
+    private static final int Y = 650;
 
     // The controller member
     VehicleController carC;
@@ -29,12 +29,19 @@ public class VehicleView extends JFrame{
     int gasAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
+    JPanel anglePanel = new JPanel();
+    JSpinner angleSpinner = new JSpinner();
+    int degreeAmount = 0;
+    JLabel degreeLabel = new JLabel("Amount of degrees");
+
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton turnLeftButton = new JButton("Turn Left");
+    JButton turnRightButton = new JButton("Turn Right");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -55,14 +62,30 @@ public class VehicleView extends JFrame{
 
         this.add(drawPanel);
 
-
-
-        SpinnerModel spinnerModel =
+        SpinnerModel angleSpinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
                         1);//step
-        gasSpinner = new JSpinner(spinnerModel);
+        angleSpinner = new JSpinner(angleSpinnerModel);
+        angleSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                degreeAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
+
+        anglePanel.setLayout(new BorderLayout());
+        anglePanel.add(degreeLabel, BorderLayout.PAGE_START);
+        anglePanel.add(angleSpinner, BorderLayout.PAGE_END);
+
+        this.add(anglePanel);
+
+        SpinnerModel gasSpinnerModel =
+                new SpinnerNumberModel(0, //initial value
+                        0, //min
+                        100, //max
+                        1);//step
+        gasSpinner = new JSpinner(gasSpinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
@@ -78,11 +101,13 @@ public class VehicleView extends JFrame{
         controlPanel.setLayout(new GridLayout(2,4));
 
         controlPanel.add(gasButton, 0);
-        controlPanel.add(turboOnButton, 1);
-        controlPanel.add(liftBedButton, 2);
-        controlPanel.add(brakeButton, 3);
-        controlPanel.add(turboOffButton, 4);
-        controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(turnRightButton, 1);
+        controlPanel.add(turboOnButton, 2);
+        controlPanel.add(liftBedButton, 3);
+        controlPanel.add(brakeButton, 4);
+        controlPanel.add(turnLeftButton, 5);
+        controlPanel.add(turboOffButton, 6);
+        controlPanel.add(lowerBedButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -107,6 +132,61 @@ public class VehicleView extends JFrame{
                 carC.gas(gasAmount);
             }
         });
+
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.brake(gasAmount); }
+        });
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.stop(); }
+        });
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.start(); }
+        });
+
+        turnLeftButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.turnLeft(); }
+        });
+
+        turnRightButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.turnRight(); }
+        });
+
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.turnOnTurbo(); }
+        });
+
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.turnOffTurbo(); }
+        });
+
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.liftBed(degreeAmount); }
+        });
+
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.lowerBed(degreeAmount); }
+        });
+
+
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
