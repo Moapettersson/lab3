@@ -46,7 +46,7 @@ public class ScaniaTruck extends Vehicle {
         if (CargoTruck.getAngle() == 0) {
         super.move();
         } else {
-            stopEngine(); // Sätter currentSpeed till 0 om vi inte kan röra oss
+            stopEngine();
         }
 
     }
