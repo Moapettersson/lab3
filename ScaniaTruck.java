@@ -28,6 +28,7 @@ public class ScaniaTruck extends Vehicle {
 
     protected void lowerTruckBed(int degrees) {
         if (getCurrentSpeed() > 0){
+            System.out.println(getCurrentSpeed());
             throw new IllegalStateException("Truck must be stationary to raise or lower the truckbed");
         } else if (degrees < 0 || degrees > 70){
             throw new IllegalArgumentException("Invalid integer. Must be within the limits 0-70");
@@ -44,6 +45,8 @@ public class ScaniaTruck extends Vehicle {
     public void move() {
         if (CargoTruck.getAngle() == 0) {
         super.move();
+        } else {
+            stopEngine(); // Sätter currentSpeed till 0 om vi inte kan röra oss
         }
 
     }
