@@ -29,6 +29,10 @@ public class VehicleView extends JFrame{
     int gasAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
+    JPanel anglePanel = new JPanel();
+    JSpinner angleSpinner = new JSpinner();
+    int degreeAmount = 0;
+    JLabel degreeLabel = new JLabel("Amount of degrees");
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
@@ -58,14 +62,30 @@ public class VehicleView extends JFrame{
 
         this.add(drawPanel);
 
-
-
-        SpinnerModel spinnerModel =
+        SpinnerModel angleSpinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
                         1);//step
-        gasSpinner = new JSpinner(spinnerModel);
+        angleSpinner = new JSpinner(angleSpinnerModel);
+        angleSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                degreeAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
+
+        anglePanel.setLayout(new BorderLayout());
+        anglePanel.add(degreeLabel, BorderLayout.PAGE_START);
+        anglePanel.add(angleSpinner, BorderLayout.PAGE_END);
+
+        this.add(anglePanel);
+
+        SpinnerModel gasSpinnerModel =
+                new SpinnerNumberModel(0, //initial value
+                        0, //min
+                        100, //max
+                        1);//step
+        gasSpinner = new JSpinner(gasSpinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
@@ -157,13 +177,13 @@ public class VehicleView extends JFrame{
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.liftBed(); }
+                carC.liftBed(degreeAmount); }
         });
 
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.lowerBed(); }
+                carC.lowerBed(degreeAmount); }
         });
 
 

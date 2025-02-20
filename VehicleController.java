@@ -127,19 +127,19 @@ public class VehicleController {
         }
     }
 
-    void liftBed() {
+    void liftBed(int amount) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof ScaniaTruck) {
-                ((ScaniaTruck) vehicle).raiseTruckBed(10); // Oklart vilken grad det ska vara?
+                ((ScaniaTruck) vehicle).raiseTruckBed(amount);
             }
         }
     }
 
 
-    void lowerBed() {
+    void lowerBed(int amount) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle instanceof ScaniaTruck) {
-                ((ScaniaTruck) vehicle).lowerTruckBed(10); // Vilken grad är rimlig?
+                ((ScaniaTruck) vehicle).lowerTruckBed(amount);
             }
         }
     }
