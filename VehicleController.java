@@ -33,9 +33,6 @@ public class VehicleController {
         cc.vehicles.add(new Saab95(0, 100));
         cc.vehicles.add(new ScaniaTruck(0,200));
 
-
-
-
         // Start a new view and send a reference of self
         cc.frame = new VehicleView("CarSim 1.0", cc);
 
@@ -55,7 +52,7 @@ public class VehicleController {
 
                 //Nu hårdkodar jag bar in gränserna på fönstret, hur tar jag in värdena här?
                 //blir det dumt att bilen kommer ha en annan hastighet efter startEngine?
-                if (x < 0 || x > 1200 || y < 0 || y > 650) {
+                if (x < 0 || x > 1400 || y < 0 || y > 650) {
                     //vehicle.stopEngine();
                     vehicle.turnLeft();
                     vehicle.turnLeft();

@@ -19,10 +19,8 @@ public class ScaniaTruck extends Vehicle {
             throw new IllegalArgumentException("Invalid integer. Must be within the limits 0-70");
         } else if (CargoTruck.getAngle() + degrees >= 70) {
             CargoTruck.setAngle(70);
-            System.out.println(CargoTruck.getAngle());
         } else {
             CargoTruck.addAngle(degrees);
-            System.out.println(CargoTruck.getAngle());
         }
     }
 
@@ -33,10 +31,8 @@ public class ScaniaTruck extends Vehicle {
             throw new IllegalArgumentException("Invalid integer. Must be within the limits 0-70");
         } else if (CargoTruck.getAngle() - degrees <= 0) {
             CargoTruck.setAngle(0);
-            System.out.println(CargoTruck.getAngle());
         } else {
             CargoTruck.subtractAngle(degrees);
-            System.out.println(CargoTruck.getAngle());
         }
     }
 
@@ -44,8 +40,9 @@ public class ScaniaTruck extends Vehicle {
     public void move() {
         if (CargoTruck.getAngle() == 0) {
         super.move();
+        } else {
+            stopEngine();
         }
-
     }
 
     @Override
