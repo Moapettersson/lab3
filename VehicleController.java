@@ -29,9 +29,13 @@ public class VehicleController {
         // Instance of this class
         VehicleController cc = new VehicleController();
 
-        cc.vehicles.add(new Volvo240(0,0));
-        cc.vehicles.add(new Saab95(0, 100));
-        cc.vehicles.add(new ScaniaTruck(0,200));
+        cc.vehicles.add(new Volvo240());
+        cc.vehicles.get(0).setPosition(0,0);
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.get(1).setPosition(0,100);
+        cc.vehicles.add(new ScaniaTruck());
+        cc.vehicles.get(2).setPosition(0,200);
+
 
         // Start a new view and send a reference of self
         cc.frame = new VehicleView("CarSim 1.0", cc);
@@ -58,6 +62,7 @@ public class VehicleController {
                     vehicle.turnLeft();
                     //vehicle.startEngine();
                 }
+
 
                 frame.drawPanel.moveit(vehicle, x, y);
                 // repaint() calls the paintComponent method of the panel
