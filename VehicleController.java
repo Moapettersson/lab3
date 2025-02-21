@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.lang.Math.*;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -33,10 +32,13 @@ public class VehicleController {
         // Instance of this class
         VehicleController cc = new VehicleController();
 
+        cc.vehicles.add(new Volvo240());
+        cc.vehicles.get(0).setPosition(0,0);
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.get(1).setPosition(0,100);
+        cc.vehicles.add(new ScaniaTruck());
+        cc.vehicles.get(2).setPosition(0,200);
 
-        cc.vehicles.add(new Volvo240(0,0));
-        cc.vehicles.add(new Saab95(0, 100));
-        cc.vehicles.add(new ScaniaTruck(0,200));
 
         // Start a new view and send a reference of self
         cc.frame = new VehicleView("CarSim 1.0", cc);
@@ -55,6 +57,8 @@ public class VehicleController {
                 int x = (int) Math.round(vehicle.getX());
                 int y = (int) Math.round(vehicle.getY());
 
+                //Nu hårdkodar jag bar in gränserna på fönstret, hur tar jag in värdena här?
+                //blir det dumt att bilen kommer ha en annan hastighet efter startEngine?
                 if (x < 0 || x > 1400 || y < 0 || y > 650) {
                     //vehicle.stopEngine();
                     vehicle.turnLeft();
