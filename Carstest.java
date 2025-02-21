@@ -6,14 +6,14 @@ public class Carstest {
 
     @Test
     public void testMove() {
-        Volvo240 v = new Volvo240(0,0);
+        Volvo240 v = new Volvo240();
         v.startEngine();
         assertEquals(0.1, v.getCurrentSpeed());
     }
 
     @Test
     public void testRight() {
-        Saab95 s = new Saab95(0,0);
+        Saab95 s = new Saab95();
         s.startEngine();
         s.turnRight();
         assertEquals("East", s.getDirection());
@@ -22,21 +22,21 @@ public class Carstest {
 
     @Test
     public void testRTBcorrect() {
-        ScaniaTruck s = new ScaniaTruck(0,0);
+        ScaniaTruck s = new ScaniaTruck();
         s.raiseTruckBed(60);
         assertEquals(60, s.CargoTruck.getAngle());
     }
 
     @Test
     public void testRTBerror() {
-        ScaniaTruck s = new ScaniaTruck(0,0);
+        ScaniaTruck s = new ScaniaTruck();
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> s.raiseTruckBed(90));
         assertEquals("Invalid integer. Must be within the limits 0-70", exception.getMessage());    }
 
     @Test
     public void testRTBmove() {
-        ScaniaTruck s = new ScaniaTruck(0,0);
+        ScaniaTruck s = new ScaniaTruck();
         s.startEngine();
         IllegalStateException exception = assertThrows(IllegalStateException.class,
                 () -> s.raiseTruckBed(60));
@@ -44,7 +44,7 @@ public class Carstest {
     }
     @Test
     public void testRTBAlreadyRaised() {
-        ScaniaTruck s = new ScaniaTruck(0,0);
+        ScaniaTruck s = new ScaniaTruck();
         s.raiseTruckBed((60));
         s.raiseTruckBed(20);
         assertEquals(70, s.CargoTruck.getAngle());
@@ -53,7 +53,7 @@ public class Carstest {
     @Test
     public void testLoadCarmoving() {
         CarTransport b = new CarTransport(6);
-        Saab95 s = new Saab95(0,0);
+        Saab95 s = new Saab95();
         b.startEngine();
         IllegalStateException exception = assertThrows(IllegalStateException.class,
                 () -> b.loadCar(s));
@@ -72,8 +72,8 @@ public class Carstest {
     @Test
     public void testLoadCar() {
         CarTransport b = new CarTransport(6);
-        Volvo240 v = new Volvo240(0,0);
-        Saab95 s = new Saab95(0,0);
+        Volvo240 v = new Volvo240();
+        Saab95 s = new Saab95();
         b.loadCar(s);
         b.loadCar(v);
         assertEquals(v, b.cargo.get(1));
@@ -82,7 +82,7 @@ public class Carstest {
     @Test
     public void testMoveCargo() {
         CarTransport b = new CarTransport(6);
-        Volvo240 v = new Volvo240(0,0);
+        Volvo240 v = new Volvo240();
         b.loadCar(v);
         b.startEngine();
         b.turnRight();
@@ -99,8 +99,8 @@ public class Carstest {
     @Test
     public void testUnLoad() {
         CarTransport b = new CarTransport(6);
-        Volvo240 v = new Volvo240(0,0);
-        Saab95 s = new Saab95(0,0);
+        Volvo240 v = new Volvo240();
+        Saab95 s = new Saab95();
         b.loadCar(v);
         b.loadCar(s);
         b.raiseTruckBed();
