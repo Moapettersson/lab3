@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.lang.Math.*;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -22,12 +23,16 @@ public class VehicleController {
     VehicleView frame;
     // A list of cars, modify if needed
     ArrayList<Vehicle> vehicles = new ArrayList<>();
+    ArrayList<Vehicle> toRemove = new ArrayList<>();
+
+    CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<Volvo240>(6);
 
     //methods:
 
     public static void main(String[] args) {
         // Instance of this class
         VehicleController cc = new VehicleController();
+
 
         cc.vehicles.add(new Volvo240(0,0));
         cc.vehicles.add(new Saab95(0, 100));
@@ -50,8 +55,6 @@ public class VehicleController {
                 int x = (int) Math.round(vehicle.getX());
                 int y = (int) Math.round(vehicle.getY());
 
-                //Nu hårdkodar jag bar in gränserna på fönstret, hur tar jag in värdena här?
-                //blir det dumt att bilen kommer ha en annan hastighet efter startEngine?
                 if (x < 0 || x > 1400 || y < 0 || y > 650) {
                     //vehicle.stopEngine();
                     vehicle.turnLeft();
@@ -59,10 +62,19 @@ public class VehicleController {
                     //vehicle.startEngine();
                 }
 
+                if (Math.abs(vehicle.getX() - 300) < 15 && Math.abs(vehicle.getY() - 300) < 15) {
+                    if (vehicle instanceof Volvo240 volvo240) {
+                        cwsVolvo.turnInCar(volvo240);
+                        toRemove.add(vehicle);
+                    }
+                }
+
                 frame.drawPanel.moveit(vehicle, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
+            vehicles.removeAll(toRemove);
+            toRemove.clear();
         }
     }
 
