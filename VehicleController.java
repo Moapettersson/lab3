@@ -93,18 +93,14 @@ public class VehicleController {
         if (vehicleModel.vehicles.size() <= 9) {
             Vehicle newVehicle = CreateVehicle.createRandomVehicle();
             vehicleModel.vehicles.push(newVehicle);
-            // Skapar nya variabler varje gång istälet
-            int randx = new Random().nextInt(500);
-            int randy = new Random().nextInt(200);
+
+            int randx = new Random().nextInt(1000);
+            int randy = new Random().nextInt(400);
+
             newVehicle.setPosition(randx, randy);
             vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
-            // Debugging: Skriv ut information om den nya bilen
-            System.out.println("Added vehicle at: " + randx + ", " + randy);
 
         }
-        /*else {
-            System.out.println("Maximum number of vehicles reached.");
-        } */
     }
 
     void removeVehicle() {
