@@ -4,23 +4,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class VehicleManager {
-    // The frame that represents this instance View of the MVC pattern
     VehicleView frame;
-    // A list of cars, modify if needed
     ArrayList<Vehicle> vehicles = new ArrayList<>();
     ArrayList<Vehicle> toRemove = new ArrayList<>();
     private final int delay = 50;
-    // The timer is started with a listener (see below) that executes the statements
-    // each step between delays.
     CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<Volvo240>(6);
     protected Timer timer = new Timer(delay, new TimerListener());
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    //methods:
-
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
      * */
+
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle vehicle : vehicles) {
