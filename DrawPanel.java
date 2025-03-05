@@ -6,8 +6,6 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-// This panel represents the animated part of the view with the car images.
-
 public class DrawPanel extends JPanel {
 
     private final Map<Vehicle, Point> vehiclePositions = new HashMap<>();
@@ -15,8 +13,6 @@ public class DrawPanel extends JPanel {
     private BufferedImage volvoWorkshopImage;
     private final Point volvoWorkshopPoint = new Point(300, 300);
 
-
-    // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
@@ -24,7 +20,6 @@ public class DrawPanel extends JPanel {
         loadImages();
     }
 
-    // Print an error message in case file is not found with a try/catch block
     private void loadImages() {
         try {
             vehicleImages.put(Volvo240.class, ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
@@ -53,7 +48,6 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    // This method is called each time the panel updates/refreshes/repaints itself
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 

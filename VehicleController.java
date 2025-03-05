@@ -1,9 +1,3 @@
-/*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
- */
-
 import java.util.Random;
 
 public class VehicleController {
@@ -14,11 +8,9 @@ public class VehicleController {
     int randx = rand.nextInt(1400);
     int randy = rand.nextInt(650);
 
-
     public VehicleController() {
         this.vehicleModel = new VehicleModel();
     }
-
 
     // Calls the gas method for each car once
     void gas(int amount) {
@@ -36,6 +28,7 @@ public class VehicleController {
             vehicle.brake(brake);
         }
     }
+
     void stop() {
         for (Vehicle vehicle : vehicleModel.vehicles
         ) {
@@ -63,6 +56,7 @@ public class VehicleController {
             vehicle.turnRight();
         }
     }
+
     void turnOnTurbo(){
         for (Vehicle vehicle : vehicleModel.vehicles) {
             if (vehicle instanceof Saab95) {
@@ -70,6 +64,7 @@ public class VehicleController {
             }
         }
     }
+
     void turnOffTurbo(){
         for (Vehicle vehicle : vehicleModel.vehicles) {
             if (vehicle instanceof Saab95) {
@@ -85,7 +80,6 @@ public class VehicleController {
             }
         }
     }
-
 
     void lowerBed(int amount) {
         for (Vehicle vehicle : vehicleModel.vehicles) {
@@ -110,13 +104,11 @@ public class VehicleController {
     }
 
     void removeVehicle() {
-        if (!vehicleModel.vehicles.isEmpty()){
+        if (!vehicleModel.vehicles.isEmpty()) {
             Vehicle vehicleToRemove = vehicleModel.vehicles.pop();
             vehicleModel.frame.drawPanel.removeVehicle(vehicleToRemove);
         }
     }
-
-
 }
 
 
