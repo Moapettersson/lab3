@@ -101,12 +101,12 @@ public class VehicleController {
             vehicleModel.vehicles.push(newVehicle);
 
             // Debugging: Skriv ut information om den nya bilen
-            System.out.println("Created new vehicle: " + newVehicle.getClass().getSimpleName());
+            // System.out.println("Created new vehicle: " + newVehicle.getClass().getSimpleName());
             vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
         }
-        else {
+        /*else {
             System.out.println("Maximum number of vehicles reached.");
-        }
+        } */
     }
 
     void removeVehicle() {
