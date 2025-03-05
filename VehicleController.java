@@ -96,13 +96,17 @@ public class VehicleController {
     }
 
     void createVehicle() {
-        vehicleModel.createRandomVehicle();
-        vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
+        if (vehicleModel.vehicles.size() <= 9) {
+            Vehicle newVehicle = CreateVehicle.createRandomVehicle();
+            vehicleModel.vehicles.push(newVehicle);
+            vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
+        }
     }
 
     void removeVehicle() {
-
-
+        if (!vehicleModel.vehicles.isEmpty()){
+            vehicleModel.vehicles.pop();
+        }
     }
 
 
