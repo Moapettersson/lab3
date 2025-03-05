@@ -19,6 +19,7 @@ public class Main {
             yPos += 100;
         }
 
+
         // Start the timer
         vc.vehicleManager.timer.start();
     }
