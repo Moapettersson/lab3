@@ -99,13 +99,20 @@ public class VehicleController {
         if (vehicleModel.vehicles.size() <= 9) {
             Vehicle newVehicle = CreateVehicle.createRandomVehicle();
             vehicleModel.vehicles.push(newVehicle);
+
+            // Debugging: Skriv ut information om den nya bilen
+            System.out.println("Created new vehicle: " + newVehicle.getClass().getSimpleName());
             vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
+        }
+        else {
+            System.out.println("Maximum number of vehicles reached.");
         }
     }
 
     void removeVehicle() {
         if (!vehicleModel.vehicles.isEmpty()){
-            vehicleModel.vehicles.pop();
+            Vehicle vehicleToRemove = vehicleModel.vehicles.pop();
+            vehicleModel.frame.drawPanel.removeVehicle(vehicleToRemove);
         }
     }
 
