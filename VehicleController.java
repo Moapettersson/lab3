@@ -6,17 +6,17 @@
 
 public class VehicleController {
     // member fields:
-    protected VehicleManager vehicleManager;
+    protected VehicleModel vehicleModel;
 
     public VehicleController() {
-        this.vehicleManager = new VehicleManager();
+        this.vehicleModel = new VehicleModel();
     }
 
 
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicleManager.vehicles
+        for (Vehicle vehicle : vehicleModel.vehicles
         ) {
             vehicle.gas(gas);
         }
@@ -24,47 +24,47 @@ public class VehicleController {
 
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Vehicle vehicle : vehicleManager.vehicles
+        for (Vehicle vehicle : vehicleModel.vehicles
         ) {
             vehicle.brake(brake);
         }
     }
     void stop() {
-        for (Vehicle vehicle : vehicleManager.vehicles
+        for (Vehicle vehicle : vehicleModel.vehicles
         ) {
             vehicle.stopEngine();
         }
     }
 
     void start() {
-        for (Vehicle vehicle : vehicleManager.vehicles
+        for (Vehicle vehicle : vehicleModel.vehicles
         ) {
             vehicle.startEngine();
         }
     }
 
     void turnLeft() {
-        for (Vehicle vehicle : vehicleManager.vehicles
+        for (Vehicle vehicle : vehicleModel.vehicles
         ) {
             vehicle.turnLeft();
         }
     }
 
     void turnRight() {
-        for (Vehicle vehicle : vehicleManager.vehicles
+        for (Vehicle vehicle : vehicleModel.vehicles
         ) {
             vehicle.turnRight();
         }
     }
     void turnOnTurbo(){
-        for (Vehicle vehicle : vehicleManager.vehicles) {
+        for (Vehicle vehicle : vehicleModel.vehicles) {
             if (vehicle instanceof Saab95) {
                 ((Saab95) vehicle).setTurboOn();
             }
         }
     }
     void turnOffTurbo(){
-        for (Vehicle vehicle : vehicleManager.vehicles) {
+        for (Vehicle vehicle : vehicleModel.vehicles) {
             if (vehicle instanceof Saab95) {
                 ((Saab95) vehicle).setTurboOff();
             }
@@ -72,7 +72,7 @@ public class VehicleController {
     }
 
     void liftBed(int amount) {
-        for (Vehicle vehicle : vehicleManager.vehicles) {
+        for (Vehicle vehicle : vehicleModel.vehicles) {
             if (vehicle instanceof ScaniaTruck) {
                 ((ScaniaTruck) vehicle).raiseTruckBed(amount);
             }
@@ -81,7 +81,7 @@ public class VehicleController {
 
 
     void lowerBed(int amount) {
-        for (Vehicle vehicle : vehicleManager.vehicles) {
+        for (Vehicle vehicle : vehicleModel.vehicles) {
             if (vehicle instanceof ScaniaTruck) {
                 ((ScaniaTruck) vehicle).lowerTruckBed(amount);
             }

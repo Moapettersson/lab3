@@ -18,7 +18,7 @@ public class VehicleView extends JFrame{
     private static final int Y = 650;
 
     // The controller member
-    VehicleController carC;
+    VehicleController vehicleC;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -48,7 +48,7 @@ public class VehicleView extends JFrame{
 
     // Constructor
     public VehicleView(String framename, VehicleController cc){
-        this.carC = cc;
+        this.vehicleC = cc;
         initComponents(framename);
     }
 
@@ -59,7 +59,6 @@ public class VehicleView extends JFrame{
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-
         this.add(drawPanel);
 
         SpinnerModel angleSpinnerModel =
@@ -77,7 +76,6 @@ public class VehicleView extends JFrame{
         anglePanel.setLayout(new BorderLayout());
         anglePanel.add(degreeLabel, BorderLayout.PAGE_START);
         anglePanel.add(angleSpinner, BorderLayout.PAGE_END);
-
         this.add(anglePanel);
 
         SpinnerModel gasSpinnerModel =
@@ -112,12 +110,10 @@ public class VehicleView extends JFrame{
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
-
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X/7-15,200));
         this.add(startButton);
-
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
@@ -129,61 +125,61 @@ public class VehicleView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+                vehicleC.gas(gasAmount);
             }
         });
 
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(gasAmount); }
+                vehicleC.brake(gasAmount); }
         });
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.stop(); }
+                vehicleC.stop(); }
         });
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.start(); }
+                vehicleC.start(); }
         });
 
         turnLeftButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turnLeft(); }
+                vehicleC.turnLeft(); }
         });
 
         turnRightButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turnRight(); }
+                vehicleC.turnRight(); }
         });
 
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turnOnTurbo(); }
+                vehicleC.turnOnTurbo(); }
         });
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turnOffTurbo(); }
+                vehicleC.turnOffTurbo(); }
         });
 
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.liftBed(degreeAmount); }
+                vehicleC.liftBed(degreeAmount); }
         });
 
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.lowerBed(degreeAmount); }
+                vehicleC.lowerBed(degreeAmount); }
         });
 
 
