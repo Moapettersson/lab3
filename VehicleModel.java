@@ -9,7 +9,7 @@ public class VehicleModel {
     public Stack<Vehicle> vehicles = new Stack<>();
     ArrayList<Vehicle> toRemove = new ArrayList<>();
     private final int delay = 50;
-    CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<Volvo240>(6);
+    CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<>(6);
     protected Timer timer = new Timer(delay, new TimerListener());
 
     /* Each step the TimerListener moves all the cars in the list and tells the

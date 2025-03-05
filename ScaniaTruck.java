@@ -8,8 +8,6 @@ public class ScaniaTruck extends Vehicle {
         super("Scania", 2, 175, 180, Color.blue);
         CargoTruck = new CargoTruck(0, 70);
         stopEngine();
-        this.x = x;
-        this.y = y;
     }
 
     protected void raiseTruckBed(int degrees) {

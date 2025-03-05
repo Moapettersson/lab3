@@ -6,7 +6,7 @@ public class CreateVehicle {
 
     public static Vehicle createRandomVehicle() {
         Random rand = new Random();
-        int randomChoice = rand.nextInt(3);  // 0, 1, eller 2
+        int randomChoice = rand.nextInt(3);
         switch (randomChoice) {
             case 0:
                 return new Volvo240();

@@ -4,9 +4,9 @@ public class VehicleController {
     // member fields:
     protected VehicleModel vehicleModel;
 
-    Random rand = new Random();
-    int randx = rand.nextInt(1400);
-    int randy = rand.nextInt(650);
+    //Random rand = new Random();
+    //int randx = rand.nextInt(1400);
+    //int randy = rand.nextInt(650);
 
     public VehicleController() {
         this.vehicleModel = new VehicleModel();
@@ -93,10 +93,14 @@ public class VehicleController {
         if (vehicleModel.vehicles.size() <= 9) {
             Vehicle newVehicle = CreateVehicle.createRandomVehicle();
             vehicleModel.vehicles.push(newVehicle);
-
-            // Debugging: Skriv ut information om den nya bilen
-            // System.out.println("Created new vehicle: " + newVehicle.getClass().getSimpleName());
+            // Skapar nya variabler varje gång istälet
+            int randx = new Random().nextInt(500);
+            int randy = new Random().nextInt(200);
+            newVehicle.setPosition(randx, randy);
             vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
+            // Debugging: Skriv ut information om den nya bilen
+            System.out.println("Added vehicle at: " + randx + ", " + randy);
+
         }
         /*else {
             System.out.println("Maximum number of vehicles reached.");
@@ -107,6 +111,7 @@ public class VehicleController {
         if (!vehicleModel.vehicles.isEmpty()) {
             Vehicle vehicleToRemove = vehicleModel.vehicles.pop();
             vehicleModel.frame.drawPanel.removeVehicle(vehicleToRemove);
+            vehicleModel.frame.drawPanel.repaint(); // säkerställer att sista bilen försvinner
         }
     }
 }

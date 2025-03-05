@@ -7,8 +7,6 @@ public class Volvo240 extends Vehicle {
     public Volvo240(){
         super("Volvo240", 4, 100, 180, Color.black);
         stopEngine();
-        this.x = x;
-        this.y = y;
     }
 
     @Override

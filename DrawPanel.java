@@ -33,9 +33,11 @@ public class DrawPanel extends JPanel {
 
     public void addVehicle(Vehicle vehicle, int x, int y) {
         vehiclePositions.put(vehicle, new Point(x, y));
+        repaint();
+
 
         // Debugging: Skriv ut vilken bil som lades till och dess position
-        // System.out.println("Added vehicle: " + vehicle.getClass().getSimpleName() + " at position: " + x + ", " + y);
+        System.out.println("Added vehicle: " + vehicle.getClass().getSimpleName() + " at position: " + x + ", " + y);
     }
 
     public void removeVehicle(Vehicle vehicle) {
@@ -44,17 +46,22 @@ public class DrawPanel extends JPanel {
 
     public void moveit(Vehicle vehicle, int x, int y) {
         if (vehiclePositions.containsKey(vehicle)) {
+            System.out.println("Before move: " + vehiclePositions.get(vehicle));
             vehiclePositions.get(vehicle).setLocation(x, y);
+            System.out.println("Updated position: " + x + ", " + y);
+            repaint();
+        } else {
+            System.out.println("Vehicle not found in vehiclePositions!");
         }
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Debugging: Skriv ut alla bilar och deras positioner
-        // System.out.println("Drawing cars:");
+
         for (Map.Entry<Vehicle, Point> entry : vehiclePositions.entrySet()) {
-            // System.out.println("Vehicle: " + entry.getKey().getClass().getSimpleName() + ", Position: " + entry.getValue());
+            System.out.println("Vehicle: " + entry.getKey().getClass().getSimpleName() +
+                    ", Position: " + entry.getValue().x + ", " + entry.getValue().y);
 
             BufferedImage img = vehicleImages.get(entry.getKey().getClass());
             if (img != null) {
