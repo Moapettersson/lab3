@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class VehicleModel {
     VehicleView frame;
-    ArrayList<Vehicle> vehicles = new ArrayList<>();
+    public Stack<Vehicle> vehicles = new Stack<>();
     ArrayList<Vehicle> toRemove = new ArrayList<>();
     private final int delay = 50;
     CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<Volvo240>(6);

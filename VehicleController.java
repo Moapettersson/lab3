@@ -4,9 +4,16 @@
 * modifying the model state and the updating the view.
  */
 
+import java.util.Random;
+
 public class VehicleController {
     // member fields:
     protected VehicleModel vehicleModel;
+
+    Random rand = new Random();
+    int randx = rand.nextInt(1400);
+    int randy = rand.nextInt(650);
+
 
     public VehicleController() {
         this.vehicleModel = new VehicleModel();
@@ -87,6 +94,17 @@ public class VehicleController {
             }
         }
     }
+
+    void createVehicle() {
+        vehicleModel.createRandomVehicle();
+        vehicleModel.frame.drawPanel.addVehicle(vehicleModel.vehicles.peek(), randx, randy);
+    }
+
+    void removeVehicle() {
+
+
+    }
+
 
 }
 

@@ -42,6 +42,8 @@ public class VehicleView extends JFrame{
     JButton lowerBedButton = new JButton("Lower Lift Bed");
     JButton turnLeftButton = new JButton("Turn Left");
     JButton turnRightButton = new JButton("Turn Right");
+    JButton createVehicleButton = new JButton("Create vehicle");
+    JButton removeVehicleButton = new JButton("Remove Vehicle");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -102,10 +104,12 @@ public class VehicleView extends JFrame{
         controlPanel.add(turnRightButton, 1);
         controlPanel.add(turboOnButton, 2);
         controlPanel.add(liftBedButton, 3);
-        controlPanel.add(brakeButton, 4);
-        controlPanel.add(turnLeftButton, 5);
-        controlPanel.add(turboOffButton, 6);
-        controlPanel.add(lowerBedButton, 7);
+        controlPanel.add(createVehicleButton, 4);
+        controlPanel.add(brakeButton, 5);
+        controlPanel.add(turnLeftButton, 6);
+        controlPanel.add(turboOffButton, 7);
+        controlPanel.add(lowerBedButton, 8);
+        controlPanel.add(removeVehicleButton, 9);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -180,6 +184,16 @@ public class VehicleView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 vehicleC.lowerBed(degreeAmount); }
+        });
+        createVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vehicleC.createVehicle(); }
+        });
+        removeVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vehicleC.removeVehicle(); }
         });
 
 
