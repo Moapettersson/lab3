@@ -7,6 +7,7 @@ import java.util.Stack;
 public class VehicleModel {
     VehicleView frame;
     public Stack<Vehicle> vehicles = new Stack<>();
+    ArrayList<Vehicle> toRemove = new ArrayList<>();
     private final int delay = 50;
     CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<>(6);
     protected Timer timer = new Timer(delay, new TimerListener());
@@ -32,16 +33,19 @@ public class VehicleModel {
                 if (Math.abs(vehicle.getX() - 300) < 15 && Math.abs(vehicle.getY() - 300) < 15) {
                     if (vehicle instanceof Volvo240 volvo240) {
                         cwsVolvo.turnInCar(volvo240);
-                        frame.drawPanel.removeVehicle(volvo240);
+                        frame.drawPanel.removeVehicle(vehicle);
+                        toRemove.add(vehicle);
 
-                        vehicles.remove(volvo240);
                     }
+
                 }
 
                 frame.drawPanel.moveit(vehicle, x, y);
 
                 frame.drawPanel.repaint();
             }
+            vehicles.removeAll(toRemove);
+            toRemove.clear();
         }
     }
 }
