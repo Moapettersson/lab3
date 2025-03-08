@@ -38,6 +38,7 @@ public class DrawPanel extends JPanel {
 
     public void removeVehicle(Vehicle vehicle) {
         vehiclePositions.remove(vehicle);
+        repaint();
     }
 
     public void moveit(Vehicle vehicle, int x, int y) {
@@ -49,8 +50,6 @@ public class DrawPanel extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-
         for (Map.Entry<Vehicle, Point> entry : vehiclePositions.entrySet()) {
             BufferedImage img = vehicleImages.get(entry.getKey().getClass());
             if (img != null) {

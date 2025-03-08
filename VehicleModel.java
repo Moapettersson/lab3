@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class VehicleModel {
     VehicleView frame;
-    public Stack<Vehicle> vehicles = new Stack<>();
+    protected Stack<Vehicle> vehicles = new Stack<>();
     ArrayList<Vehicle> toRemove = new ArrayList<>();
     private final int delay = 50;
     CarWorkshop<Volvo240> cwsVolvo = new CarWorkshop<>(6);

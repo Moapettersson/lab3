@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class CreateVehicle {
 
-    public static Vehicle createRandomVehicle() {
+    protected static Vehicle createRandomVehicle() {
         Random rand = new Random();
         int randomChoice = rand.nextInt(3);
         switch (randomChoice) {

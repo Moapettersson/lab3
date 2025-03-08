@@ -1,18 +1,13 @@
 import java.util.Random;
 
 public class VehicleController {
-    // member fields:
+
     protected VehicleModel vehicleModel;
 
-    //Random rand = new Random();
-    //int randx = rand.nextInt(1400);
-    //int randy = rand.nextInt(650);
-
-    public VehicleController() {
+    protected VehicleController() {
         this.vehicleModel = new VehicleModel();
     }
 
-    // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Vehicle vehicle : vehicleModel.vehicles
@@ -107,7 +102,6 @@ public class VehicleController {
         if (!vehicleModel.vehicles.isEmpty()) {
             Vehicle vehicleToRemove = vehicleModel.vehicles.pop();
             vehicleModel.frame.drawPanel.removeVehicle(vehicleToRemove);
-            vehicleModel.frame.drawPanel.repaint(); // säkerställer att sista bilen försvinner
         }
     }
 }

@@ -9,7 +9,6 @@ public class VehicleView extends JFrame{
     private static final int X = 1400;
     private static final int Y = 650;
 
-    // The controller member
     VehicleController vehicleC;
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
@@ -46,8 +45,6 @@ public class VehicleView extends JFrame{
         initComponents(framename);
     }
 
-    // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents(String title) {
 
         this.setTitle(title);
@@ -116,8 +113,6 @@ public class VehicleView extends JFrame{
         stopButton.setPreferredSize(new Dimension(X/7-15,200));
         this.add(stopButton);
 
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -189,17 +184,14 @@ public class VehicleView extends JFrame{
         });
 
 
-
-        // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
-        // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        // Center the frame
+
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        // Make the frame visible
+
         this.setVisible(true);
-        // Make sure the frame exits when "x" is pressed
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
