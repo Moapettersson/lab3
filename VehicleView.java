@@ -39,7 +39,6 @@ public class VehicleView extends JFrame{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    // Constructor
     public VehicleView(String framename, VehicleController cc){
         this.vehicleC = cc;
         initComponents(framename);
@@ -172,17 +171,18 @@ public class VehicleView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 vehicleC.lowerBed(degreeAmount); }
         });
+
         createVehicleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vehicleC.createVehicle(); }
         });
+
         removeVehicleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vehicleC.removeVehicle(); }
         });
-
 
         this.pack();
 

@@ -2,11 +2,11 @@ import java.awt.*;
 
 public abstract class Vehicle implements movable {
 
-    protected int nrDoors; // Number of doors on the car, only subclasses can access, but you need to use getter and setter
-    protected double enginePower; // Engine power of the car
-    private double currentSpeed; // The current speed of the car
-    private Color color; // Color of the car
-    protected String modelName; // The car model name
+    protected int nrDoors;
+    protected double enginePower;
+    private double currentSpeed;
+    private Color color;
+    protected String modelName;
 
 
     protected double x;
@@ -72,7 +72,6 @@ public abstract class Vehicle implements movable {
         x += xChange;
         y += yChange;
     }
-
 
     public void move() {
         switch (direction) {
